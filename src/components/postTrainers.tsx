@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const PutTrainer = () => {
+const PostTrainer = () => {
   const [nombre, setNombre] = useState('');
   const [apellidos, setApellidos] = useState('');
   const [sexo, setSexo] = useState('');
@@ -36,4 +36,4 @@ const PutTrainer = () => {
   );
 };
 
-export default PutTrainer;
+export default PostTrainer;

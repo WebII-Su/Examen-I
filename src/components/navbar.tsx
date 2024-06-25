@@ -7,7 +7,7 @@ const navbar = () => {
         <div className="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
             <div className="bg-dark p-4">
             <span className="text-body-secondary">  <Link to="/listPokemon" >Pokemones</Link>   </span>
-            <span className="text-body-secondary">  <Link to="/listTrainers">Entrenadores</Link>    </span>
+            <span className="text-body-secondary">  <Link to="/listTrainer">Entrenadores</Link>    </span>
         </div>
         </div>
         <nav className="navbar navbar-dark bg-dark">

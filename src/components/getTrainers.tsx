@@ -5,23 +5,38 @@ import { useNavigate } from "react-router-dom";
 
 
 const GetTrainer = () => {
-    const [data, setData] = useState<any[]>([]);
+    const [data, setData] = useState([]);
+    let result: any[];
+    result = [];
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const obtenerTrainer = async () => {
-            try {
-                const response = await axios.get('http://localhost:5005/trainers');
-                const json = response.data;             //acá el profe lo trabaja como json
-                setData(json);
-                console.log(json);
-            } catch (error) {
-                console.error(error);
-            }
-        };
+    const Obtener = async () => {
+        try {
+            axios
+                .get('http://localhost:5000/users')
+                .then(response => {
+                    const json = response.data;
+                    setData(json.data);
+                    console.log(json.data);
+                });
+        } catch (error) {
+            console.error(error);
+        }
+    };
+    const convertir = () => {
+        data.forEach((item, index) => {
+            result.push(item);
+        });
+    }
 
-        obtenerTrainer();
+    useEffect(() => {
+        Obtener();
+
     }, []);
+
+    useEffect(() => {
+        convertir();
+    }, [data]);
     
 
     return(

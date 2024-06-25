@@ -37,7 +37,7 @@ const GetPokemon = () => {
     // useEffect cada vez que cambia generación
     useEffect(() => {
         obtener(urls[gen]);
-        
+        //eslint 
     }, [gen]);
 
     // Función del clic en el pokemon
@@ -71,7 +71,7 @@ const GetPokemon = () => {
 
     return (
         <div className="contenedor_grande">
-             <img src={pokelogo} alt="pokelogoxd" width="30%"  />
+             <img className="space" src={pokelogo} alt="pokelogoxd" width="30%"  />
             <br />
             <br />
             Generación 

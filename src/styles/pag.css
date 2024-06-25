@@ -10,7 +10,9 @@
     height: auto;
 
 }
-
+.space{
+    margin-left: 15%;
+}
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -52,3 +54,6 @@
     height: auto;
 }
 
+select{
+    margin-left: 2%;
+}

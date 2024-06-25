@@ -6,7 +6,7 @@ import Navbar from "./components/navbar"; //esta es la  navbar, la primera N deb
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ObtenerPokemones from './pages/listPokemon';
 import ObtenerTrainers from './pages/listTrainer';
-import PutTrainer from './components/putTrainers';
+import PostTrainer from './components/postTrainers';
 
 
 const root = ReactDOM.createRoot(
@@ -19,7 +19,7 @@ root.render(
       <Route path="/" element={<App />} />
       <Route path='/listPokemon' element={<ObtenerPokemones />} />  
       <Route path='/listTrainer' element={<ObtenerTrainers />} />  
-      <Route path='/putTrainers' element={<PutTrainer />} />  
+      <Route path='/postTrainers' element={<PostTrainer />} />  
     </Routes>
   </BrowserRouter>
 );
