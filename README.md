@@ -42,6 +42,6 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ## Learn More
 
 ### SE DEBE INSTALAR ESTO
-### 'npm install'
-### 'npm install axios'
-### 'npm install react-router-dom'
+### `npm install`
+### `npm install axios`
+### `npm install react-router-dom`
