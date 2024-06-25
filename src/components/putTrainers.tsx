@@ -25,11 +25,11 @@ const PutTrainer = () => {
     <div>
       <h2>Agregar Nuevo Entrenador</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
-        <input type="text" placeholder="Apellidos" value={apellidos} onChange={(e) => setApellidos(e.target.value)} required />
-        <input type="text" placeholder="Sexo" value={sexo} onChange={(e) => setSexo(e.target.value)} required />
+        <input type="text" placeholder="Nombre"     value={nombre} onChange={(e) => setNombre(e.target.value)} required />
+        <input type="text" placeholder="Apellidos"  value={apellidos} onChange={(e) => setApellidos(e.target.value)} required />
+        <input type="text" placeholder="Sexo"       value={sexo} onChange={(e) => setSexo(e.target.value)} required />
         <input type="text" placeholder="Residencia" value={residencia} onChange={(e) => setResidencia(e.target.value)} required />
-        <input type="text" placeholder="Foto URL" value={foto_Url} onChange={(e) => setFotoUrl(e.target.value)} required />
+        <input type="text" placeholder="Foto URL"   value={foto_Url} onChange={(e) => setFotoUrl(e.target.value)} required />
         <button type="submit">Agregar</button>
       </form>
     </div>

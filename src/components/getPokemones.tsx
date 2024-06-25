@@ -73,6 +73,7 @@ const GetPokemon = () => {
         <div className="contenedor_grande">
              <img src={pokelogo} alt="pokelogoxd" width="30%"  />
             <br />
+            <br />
             Generación 
             <select name="generacion" id="cmb1opciones" onChange={(e) => setGen(e.target.value as Generation)}> 
                 <option value="Gen1">Primera</option>

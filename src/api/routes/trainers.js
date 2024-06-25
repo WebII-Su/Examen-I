@@ -45,7 +45,7 @@ router.post('/', function(req, res, next) {
     trai.foto_Url = newTrainer.foto_Url;
 
     trai.save().then(()=>{
-        salida = {
+        var salida = {          //daba error el no ponerla como var
             status_code:201,
             status_message: 'Data was created',
             data: trai
@@ -53,3 +53,4 @@ router.post('/', function(req, res, next) {
         res.set('Content-Type', 'application/json').status(201).send(salida);
     }).catch(next);
 });
+module.exports = router;

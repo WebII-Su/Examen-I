@@ -1,5 +1,3 @@
-// Load libraries into the environment application
-var createError = require('http-errors');
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');

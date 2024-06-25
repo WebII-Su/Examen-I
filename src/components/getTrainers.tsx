@@ -4,16 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 
 
-
-type Trainer = {   //acá es lo mismo que las generaciones| se puyede usar interface
-    _id: string;
-    nombre: string;
-    apellidos: string;
-    sexo: string;
-    residencia: string;
-    foto_Url: string;
-};
-
 const GetTrainer = () => {
     const [data, setData] = useState<any[]>([]);
     const navigate = useNavigate();
@@ -21,7 +11,7 @@ const GetTrainer = () => {
     useEffect(() => {
         const obtenerTrainer = async () => {
             try {
-                const response = await axios.get('http://localhost:5005/');
+                const response = await axios.get('http://localhost:5005/trainers');
                 const json = response.data;             //acá el profe lo trabaja como json
                 setData(json);
                 console.log(json);
@@ -35,15 +25,9 @@ const GetTrainer = () => {
     
 
     return(
-        <div>
-             <ul>
-        {data.map((item, index) => (
-          <p key={index}>{item.nombre} - {item.apellidos}</p>
+        <div className="contenedor_grande">
+            <h1>pruebaxd</h1>
         
-        ))}
-      </ul>
-      <br />
-      <button onClick={() => navigate('/putTrainers')} >Ingresa un nuevo entrenador!</button>
         </div>
     )
 

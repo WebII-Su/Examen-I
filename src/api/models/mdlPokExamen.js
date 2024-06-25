@@ -1,11 +1,13 @@
-import mongoose from 'mongoose';
+var mongoose = require('mongoose');
 
-var schEntrenador = new mongoose.Schema({
-	nombre : {type: String, required:[true, 'This field is required']},
-	apellidos: {type: String, required:[true, 'This field is required']},
-	sexo: {type: String, required:[true, 'This field is required']},
-	residencia: {type: String, required:[true, 'This field is required']},
-	foto_Url: {type: String, required:[true, 'This field is required']}	
+
+
+const schEntrenador = new mongoose.Schema({
+	nombre : {type: String, required: true},
+	apellidos: {type: String, required:true },
+	sexo: {type: String, required: true},
+	residencia: {type: String, required: true},
+	foto_Url: {type: String, required: true}	
 });
 
 mongoose.model('Trainers', schEntrenador);
