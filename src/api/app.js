@@ -2,11 +2,13 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var router = express.Router();
+const cors = require('cors'); // Importa la biblioteca CORS
 
 const app = express();
 const port = 5005;
 
 app.use(express.json());
+app.use(cors());
 
 mongoose.connect('mongodb://localhost:27017/dbPokExamen', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Conectado a MongoDB correctamente'))
@@ -152,6 +154,7 @@ router.post('/addTeam', function(req, res, next) {
 });
 
 // GET para obtener todos los equipos
+// http://localhost:5005/api/getTeam
 router.get('/getTeam', async function(req, res) {
     try {
         const teams = await Teams.find({});
@@ -178,9 +181,6 @@ router.get('/getTeam', async function(req, res) {
         });
     }
 });
-
-
-
 
 
 

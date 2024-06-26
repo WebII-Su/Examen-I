@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ObtenerPokemones from './pages/listPokemon';
 import ObtenerTrainers from './pages/listTrainer';
 import PostTrainer from './components/postTrainers';
+import GetTeams from './components/GetTeams';
 
 
 const root = ReactDOM.createRoot(
@@ -20,6 +21,7 @@ root.render(
       <Route path='/listPokemon' element={<ObtenerPokemones />} />  
       <Route path='/listTrainer' element={<ObtenerTrainers />} />  
       <Route path='/postTrainers' element={<PostTrainer />} />  
+      <Route path='/GetTeams' element={<GetTeams />} />  
     </Routes>
   </BrowserRouter>
 );
