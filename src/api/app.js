@@ -20,6 +20,10 @@ mongoose.connect('mongodb://localhost:27017/dbPokExamen', { useNewUrlParser: tru
 require('./models/md_entrenador');
 var Trainers = mongoose.model('Trainers');
 
+require('./models/md_equipos');
+var Teams = mongoose.model('Teams');
+
+
 // #################################################
 //          Rutas de la API
 // #################################################
@@ -94,10 +98,97 @@ router.post('/addTrainer', function(req, res, next) {
 });
 
 
+// POST para nuevos equipos
+// http://localhost:5005/api/addTeam
+
+//ejemplo:
+
+// {
+//     "nombreEquipo": "Equipo A",
+//     "entrenadorEncargado": "Juan Pérez",
+//     "urlFoto_entrenador": "https://example.com/juan_perez.jpg",
+//     "pkmon_1": "Charizard",
+//     "pkmon_2": "Blastoise",
+//     "pkmon_4": "Venusaur",
+//     "pkmon_6": "Pikachu"
+// }
+
+router.post('/addTeam', function(req, res, next) {
+    var newTeam = req.body;
+    var team = new Teams();
+
+    // Asignación de campos requeridos
+    team.nombreEquipo = newTeam.nombreEquipo;
+    team.entrenadorEncargado = newTeam.entrenadorEncargado;
+    team.urlFoto_entrenador = newTeam.urlFoto_entrenador;
+    team.pkmon_1 = newTeam.pkmon_1;
+
+    var poke = 'pkmon_';
+    for (let i = 2; i <= 6; i++) {
+        var aux = poke + i;
+        if (aux in newTeam) {
+            team[aux] = newTeam[aux];
+        } else {
+            team[aux] = 'null';
+        }
+    }
+
+    team.save().then(() => {
+        var salida = {
+            status_code: 201,
+            status_message: 'Equipo creado exitosamente',
+            data: team
+        };
+        res.status(201).json(salida);
+    }).catch(err => {
+        console.error('Error al guardar el equipo:', err);
+        var salida = {
+            status_code: 500,
+            status_message: 'Error interno del servidor',
+            error: err.message 
+        };
+        res.status(500).json(salida);
+    });
+});
+
+// GET para obtener todos los equipos
+router.get('/getTeam', async function(req, res) {
+    try {
+        const teams = await Teams.find({});
+
+        if (teams.length === 0) {
+            return res.status(200).json({
+                status_code: 200,
+                status_message: 'Ok',
+                data: { teams: 'List is empty' }
+            });
+        }
+
+        res.status(200).json({
+            status_code: 200,
+            status_message: 'Ok',
+            data: teams
+        });
+    } catch (err) {
+        console.error('Error al obtener los equipos:', err);
+        res.status(500).json({
+            status_code: 500,
+            status_message: 'Error interno del servidor al obtener los equipos',
+            error: err.message
+        });
+    }
+});
+
+
+
+
+
+
+
 app.use('/api', router);
 
 app.listen(port, () => {
     console.log(`Servidor escuchando en http://localhost:${port}`);
-  });
+});
 
 
