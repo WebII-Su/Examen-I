@@ -70,7 +70,8 @@ const GetPokemon = () => {
     
 
     return (
-        <div className="contenedor_grande">
+        <div>
+             <div className="contenedor_grande">
              <img className="space" src={pokelogo} alt="pokelogoxd" width="30%"  />
             <br />
             <br />
@@ -103,6 +104,8 @@ const GetPokemon = () => {
                     );
                 })}
             </div>
+        </div>
+       
 
         {/* Modal para el Pokémon seleccionado */}
             {selectedPokemon && (

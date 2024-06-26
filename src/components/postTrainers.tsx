@@ -18,19 +18,46 @@ const PostTrainer = () => {
       navigate('/');
     } catch (error) {
       console.error('Error adding new trainer:', error);
+      return(
+        <div>errrooooor</div>
+      )
     }
   };
 
   return (
-    <div>
+    <div className="" >
       <h2>Agregar Nuevo Entrenador</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Nombre"     value={nombre} onChange={(e) => setNombre(e.target.value)} required />
-        <input type="text" placeholder="Apellidos"  value={apellidos} onChange={(e) => setApellidos(e.target.value)} required />
-        <input type="text" placeholder="Sexo"       value={sexo} onChange={(e) => setSexo(e.target.value)} required />
-        <input type="text" placeholder="Residencia" value={residencia} onChange={(e) => setResidencia(e.target.value)} required />
-        <input type="text" placeholder="Foto URL"   value={foto_Url} onChange={(e) => setFotoUrl(e.target.value)} required />
-        <button type="submit">Agregar</button>
+        <div className="row" >
+         <div className="col">
+          <input type="text" placeholder="Nombre"     value={nombre} onChange={(e) => setNombre(e.target.value)} required />
+         </div>
+         <div className="col">
+           <input type="text" placeholder="Apellidos"  value={apellidos} onChange={(e) => setApellidos(e.target.value)} required />
+        </div>
+        </div> 
+        <div className="row" >
+         <div className="col">
+           <input type="text" placeholder="Sexo"       value={sexo} onChange={(e) => setSexo(e.target.value)} required />
+         </div>
+         <div className="col">
+         <input type="text" placeholder="Residencia" value={residencia} onChange={(e) => setResidencia(e.target.value)} required />
+         </div>
+        </div>
+        <div className="row" > 
+          <div className="col">
+            <input type="text" placeholder="Foto URL"   value={foto_Url} onChange={(e) => setFotoUrl(e.target.value)} required />
+          </div>
+          <div className="col">
+            <button type="submit">Agregar</button>
+          </div>
+        </div>
+
+      
+        
+       
+       
+        
       </form>
     </div>
   );

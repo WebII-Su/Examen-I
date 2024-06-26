@@ -13,7 +13,7 @@ const navbar =  () => {
                         <Link to="/listPokemon" className="nav-link">Pokémons</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/xd" className="nav-link">Entrenadores Pokémon</Link>
+                        <Link to="/listTrainer" className="nav-link">Entrenadores Pokémon</Link>
                     </li>
                     <li className="nav-item">
                         <Link to="/getTeams" className="nav-link">Equipos Pokémon</Link>
