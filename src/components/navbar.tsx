@@ -17,9 +17,7 @@ const navbar =  () => {
                     </li>
                     <li className="nav-item">
                         <Link to="/getTeams" className="nav-link">Equipos Pokémon</Link>
-                    </li>
-                    
-                    
+                    </li> 
                 </ul>
             </div>
         </nav>

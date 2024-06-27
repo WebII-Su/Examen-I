@@ -4,18 +4,17 @@
     height: 700px;
     display: flex;
     justify-content: center;
-  }
-  
-  .form-container {
+}
+.form-container {
     width: 450px;
     height: 400px;
-    margin-top: 20px;       /* Reduce el margen superior a 20px */
+    margin-top: 20px;       
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
     background-color: #f9f9f9;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+}
 
 input{
     margin-left: 24%;
@@ -30,6 +29,5 @@ button {
     border-radius: 3px;
     cursor: pointer;
     font-size: 12px;
-    margin-left: 30%;
+    margin-left: 35%;
 }
-

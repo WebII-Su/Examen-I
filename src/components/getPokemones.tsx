@@ -70,19 +70,22 @@ const GetPokemon = () => {
     
 
     return (
-        <div>
+        <div className="color" >
              <div className="contenedor_grande">
              <img className="space" src={pokelogo} alt="pokelogoxd" width="30%"  />
             <br />
             <br />
-            Generación 
-            <select name="generacion" id="cmb1opciones" onChange={(e) => setGen(e.target.value as Generation)}> 
-                <option value="Gen1">Primera</option>
-                <option value="Gen2">Segunda</option>
-                <option value="Gen3">Tercera</option>
-                <option value="Gen4">Cuarta</option>
-                <option value="Gen5">Quinta</option>
-            </select>
+            <div className="opciones" >
+                <h5>Generación</h5> 
+                <select name="generacion" id="cmb1opciones" onChange={(e) => setGen(e.target.value as Generation)}> 
+                    <option value="Gen1">Primera</option>
+                    <option value="Gen2">Segunda</option>
+                    <option value="Gen3">Tercera</option>
+                    <option value="Gen4">Cuarta</option>
+                    <option value="Gen5">Quinta</option>
+                </select>
+            </div>
+            
             <hr />
             <div className="row row-cols-3 row-cols-md-6 g-1">
                 {data.map((item) => {

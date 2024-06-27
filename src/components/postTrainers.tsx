@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "../styles/post.css";
+import "../styles/postTrainer.css";
 
 const PostTrainer = () => {
   const [nombre, setNombre] = useState('');
@@ -28,6 +28,8 @@ const PostTrainer = () => {
   return (
     <div className="pad" >
       <form className="form-container" onSubmit={handleSubmit}>
+        <h5>Datos del entrenador</h5>
+        <br />
          <div >
           <input type="text" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
          </div>
@@ -48,7 +50,7 @@ const PostTrainer = () => {
             <input type="text" placeholder="Foto URL"   value={foto_Url} onChange={(e) => setFotoUrl(e.target.value)} required />
           </div>
           <br />
-            <button type="submit"   >Agregar</button>    
+            <button type="submit">Agregar</button>    
       </form>
     </div>
   );

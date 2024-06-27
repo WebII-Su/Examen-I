@@ -10,6 +10,14 @@
     height: auto;
 
 }
+.color{
+    background-color:#1e2f58;
+}
+.opciones{
+    display: flex;
+    color: white;
+}
+
 .space{
     margin-left: 15%;
 }

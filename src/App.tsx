@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <br />
       <h2>Podriamos usar un gif o algo :p </h2>
-      <img src={op1} alt="Nimodillo" width="50%" />
+      <img src={op1} alt="Nimodillo" width="30%" />
     </div>
   );
 }
