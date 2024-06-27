@@ -36,14 +36,15 @@ const PostTeams = () => {
       ];
 
       let allPokemon: { name: string; index: number }[] = [];
+      let currentIndex = 1; // Índice inicial para todos los Pokémon
 
       for (let gen of generations) {
         const respuesta = await axios.get(gen);
         const jsonName = respuesta.data.results;
-
-        const nuevosPokemon = jsonName.map((pokemon: any, index: number) => ({
+        // eslint-disable-next-line 
+        const nuevosPokemon = jsonName.map((pokemon: any) => ({
           name: pokemon.name,
-          index: index + 1
+          index: currentIndex++ // Usamos y luego incrementamos currentIndex
         }));
 
         allPokemon = [...allPokemon, ...nuevosPokemon];
@@ -139,42 +140,42 @@ const PostTeams = () => {
   useEffect(() => {
     if (nombre1.trim() !== '') { // Verificamos que el nombre no esté vacío antes de buscar
       buscaPokemon(nombre1, 'nombre1' ,pokemones); // Llamada a la función de búsqueda al cambiar el nombre
-    }
+    } // eslint-disable-next-line 
   }, [nombre1, pokemones]);
 
    //    POKEMON 2
   useEffect(() => {
     if (nombre2.trim() !== '') { // Verificamos que el nombre no esté vacío antes de buscar
       buscaPokemon(nombre2, 'nombre2' ,pokemones); // Llamada a la función de búsqueda al cambiar el nombre
-    }
+    } // eslint-disable-next-line 
   }, [nombre2, pokemones]);
 
   //    POKEMON 3
   useEffect(() => {
     if (nombre3.trim() !== '') { // Verificamos que el nombre no esté vacío antes de buscar
       buscaPokemon(nombre3, 'nombre3' ,pokemones); // Llamada a la función de búsqueda al cambiar el nombre
-    }
+    } // eslint-disable-next-line 
   }, [nombre3, pokemones]);
 
    //    POKEMON 4
   useEffect(() => {
     if (nombre4.trim() !== '') { // Verificamos que el nombre no esté vacío antes de buscar
       buscaPokemon(nombre4, 'nombre4' ,pokemones); // Llamada a la función de búsqueda al cambiar el nombre
-    }
+    } // eslint-disable-next-line 
   }, [nombre4, pokemones]);
 
   //    POKEMON 5
   useEffect(() => {
     if (nombre5.trim() !== '') { // Verificamos que el nombre no esté vacío antes de buscar
       buscaPokemon(nombre5, 'nombre5' ,pokemones); // Llamada a la función de búsqueda al cambiar el nombre
-    }
+    } // eslint-disable-next-line
   }, [nombre5, pokemones]);
 
    //    POKEMON 6
   useEffect(() => {
     if (nombre6.trim() !== '') { // Verificamos que el nombre no esté vacío antes de buscar
       buscaPokemon(nombre6, 'nombre6' ,pokemones); // Llamada a la función de búsqueda al cambiar el nombre
-    }
+    } // eslint-disable-next-line 
   }, [nombre6, pokemones]);
 
     return (
@@ -190,7 +191,7 @@ const PostTeams = () => {
 
             <h4>Pokemon 2</h4>
             <input type="text" onChange={(e) => cambiarVar2(e.target.value)} />
-            <img src={imagenUrl2} alt={`Imagen de ${nombre2}`} />
+            <img src={imagenUrl2} width="30px" height="20px" alt={`Imagen de ${nombre2}`} />
 
             <h4>Pokemon 3</h4>
             <input type="text" onChange={(e) => cambiarVar3(e.target.value)} />
