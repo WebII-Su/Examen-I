@@ -58,7 +58,7 @@ td {
 }
 
 .boton {
-  margin-left: 20%;
+  margin-left: 13%;
 }
 
 .boton button {
@@ -66,7 +66,6 @@ td {
   margin-bottom: 30px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   height: 40px;
-
 }
 
 .boton button:hover {

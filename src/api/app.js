@@ -1,5 +1,4 @@
 var express = require('express');
-var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var router = express.Router();
 const cors = require('cors'); // Importa la biblioteca CORS
