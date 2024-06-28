@@ -7,7 +7,7 @@
 ### Importante, funcionamiento de la API
 Importante entrar al directorio donde se encuentra la API en js
 
-cd .\src\api\
+`cd .\src\api\`
 
 ### Instalar las siguientes dependencias
 `npm init -y`
