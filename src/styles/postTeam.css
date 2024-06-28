@@ -1,6 +1,6 @@
 
 .contenedor_form {
-    height: 800px;
+    height: 2200px;
     width: 100%;
     background-color: #1e2f58;
     text-align: center;
@@ -17,7 +17,7 @@
 .formulario {
     margin-left: auto;
     margin-right: auto;
-    height: 900px;
+    height: 2400px;
     width: 750px;
     background-color: white;
     margin-top: 20px;
@@ -33,9 +33,22 @@
     width: 300px;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 
 .inputs img {
     height: 200px;
     width: 200px;
+}
+
+.inputs button {
+    background-color: rgb(5, 44, 219);
+    width: 300px;
+    font-size: 25px;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.inputs button:hover {
+    background-color: rgb(46, 84, 255);
 }

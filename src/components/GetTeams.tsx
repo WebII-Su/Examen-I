@@ -48,7 +48,7 @@ const GetTeams = () => {
         allPokemon = [...allPokemon, ...nuevosPokemon];
       }
 
-      setPokemones(allPokemon); // Agregamos todos los Pokémon al estado pokemones
+      setPokemones(allPokemon); // se agregan todos los pokemones al array
 
     } catch (err) {
       console.log('Se produjo un error al obtener los nombres de Pokémon de múltiples generaciones');

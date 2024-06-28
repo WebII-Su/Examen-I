@@ -1,8 +1,58 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/postTeam.css";
+import { useNavigate } from "react-router-dom";
 
 const PostTeams = () => {
+
+  //const location = useLocation();
+  //const trainers_json = location.state ? location.state.jsonData : 'sin datods';
+  const [data, setData] = useState<any[]>([]); //array con los entrenadores
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
+
+  //creading post
+  const agregarEquipo = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+        if (teamName.trim() !== '' && trainer.trim() !== '' && teamPic.trim() !== '' && isFound) {
+            if (nombre1.trim() !== '' && nombre2.trim() !== '' && nombre3.trim() !== '' && nombre4.trim() !== '' && nombre5.trim() !== '' && nombre6.trim() !== '') {
+                let nombres = [nombre1, nombre2, nombre3, nombre4, nombre5, nombre6];
+                let nombresUnicos = new Set(nombres);
+
+                if (nombresUnicos.size === nombres.length) {
+                    await axios.post('http://localhost:5005/api/addTeam', {
+                        nombreEquipo: teamName,
+                        entrenadorEncargado: trainer,
+                        urlFoto_entrenador: trainerPic,
+                        pkmon_1: nombre1,
+                        pkmon_2: nombre2,
+                        pkmon_3: nombre3,
+                        pkmon_4: nombre4,
+                        pkmon_5: nombre5,
+                        pkmon_6: nombre6
+                    });
+                    navigate('/getTeams');
+                } else {
+                    console.log('Hay nombres repetidos');
+                }
+            }
+        }
+    } catch (err) {
+        console.error('Error al agregar equipo:', err);
+    }
+}
+
+
+  //datos del form
+  const [teamName, setTeamName] = useState<string>('');
+  const [trainer, setTrainer] = useState<string>('');
+  const [trainerPic, setTrainerPic] = useState<string>('');
+  const [teamPic, setTeamPic] = useState<string>('');
+  const [isFound, setIsFound] = useState(false);
+
+
   const [nombre1, setNombre1] = useState<string>('');
   const [imagenUrl1, setImagenUrl1] = useState<string>(''); 
 
@@ -20,7 +70,22 @@ const PostTeams = () => {
 
   const [nombre6, setNombre6] = useState<string>('');
   const [imagenUrl6, setImagenUrl6] = useState<string>(''); 
-  
+
+
+    const obtener = async () => {
+      try {
+        const response = await axios.get('http://localhost:5005/api/getTrainers');
+        const jsonData = response.data;
+      if (jsonData.status_code === 200) {
+        setData(Array.isArray(jsonData.data) ? jsonData.data : []);
+      } else {
+        setError('Error al obtener los equipos');
+      }
+      } catch (err) {
+        setError('Error al conectar con el servidor');
+      };
+  };
+
   // Variable para el nombre del Pokémon
   const [pokemones, setPokemones] = useState<{ name: string; index: number }[]>([]); // Array para almacenar los Pokémon
   // Estado para la URL de la imagen del Pokémon
@@ -60,6 +125,18 @@ const PostTeams = () => {
   // #############################################################################################################
 
 
+  // const cambiarTeamName = (teamName: string) => {
+  //   setTeamName(teamName); 
+  // };
+
+  // const cambiarEntrenador = (trainer: string) => {
+  //   setTrainer(trainer); 
+  // };
+
+  // const cambiarPicTrainer = (trainerPic: string) => {
+  //   setTrainerPic(trainerPic); 
+  // };
+
   const cambiarVar1 = (pokeName: string) => {
     setNombre1(pokeName.toLowerCase()); 
   };
@@ -84,6 +161,7 @@ const PostTeams = () => {
     setNombre6(pokeName.toLowerCase()); 
   };
 
+  
 
   const buscaPokemon = (nombrePokemon: string, input: string ,pokemones: { name: string; index: number }[]) => {
     for (let i = 0; i < pokemones.length; i++) {
@@ -130,11 +208,9 @@ const PostTeams = () => {
   };
 
   
-
   useEffect(() => {
     guardarPokemones(); // Llamada a la función para obtener los Pokémon al montar el componente
   }, []);
-
 
   //    POKEMON 1
   useEffect(() => {
@@ -178,43 +254,99 @@ const PostTeams = () => {
     } // eslint-disable-next-line 
   }, [nombre6, pokemones]);
 
+  
+  //validacion de trainer, que haga un get de los trainers en la base de datos
+  useEffect(() => {
+    if (trainer.trim() !== '') { // Verificamos que el nombre no esté vacío antes de buscar
+      for (let i=0; i<data.length; i++) {
+        if (trainer === data[i].nombre) {
+          setTrainerPic(data[i].foto_Url)
+          setIsFound(true);
+          break;
+
+        }//cierra if
+        
+      }//cierra for
+
+    } //cierra if
+    else {}
+  }, [trainer, data]);
+
+  
+  useEffect(() => {
+    obtener();
+  }, []);
+
     return (
     <div>
       <div className="contenedor_form">
-        <h3>Formulario para publicar tu equipo</h3>
+        <form onSubmit={agregarEquipo}>
+          <h3>Formulario para publicar tu equipo</h3>
 
-        <div className="formulario">
-          <div className="inputs">
-            <h4>Pokemon 1</h4>
-            <input type="text" onChange={(e) => cambiarVar1(e.target.value)} />
-            <img src={imagenUrl1} alt={`Imagen de ${nombre1}`} />
+          <div className="formulario">
+            <div className="inputs">
 
-            <h4>Pokemon 2</h4>
-            <input type="text" onChange={(e) => cambiarVar2(e.target.value)} />
-            <img src={imagenUrl2} width="30px" height="20px" alt={`Imagen de ${nombre2}`} />
+              <h4>Nombre del equipo</h4>
+              <input type="text" value={teamName} onChange={(e) => setTeamName(e.target.value)} />
 
-            <h4>Pokemon 3</h4>
-            <input type="text" onChange={(e) => cambiarVar3(e.target.value)} />
-            <img src={imagenUrl3} alt={`Imagen de ${nombre3}`} />
+              <br />
+              <br />
 
-            <h4>Pokemon 4</h4>
-            <input type="text" onChange={(e) => cambiarVar4(e.target.value)} />
-            <img src={imagenUrl4} alt={`Imagen de ${nombre4}`} />
+              <h4>Entrenador a cargo</h4>
+              <input type="text" value={trainer} onChange={(e) => setTrainer(e.target.value)}/>
+              <img src={trainerPic} alt={'Fallo exitosamente'} />
 
-            <h4>Pokemon 5</h4>
-            <input type="text" onChange={(e) => cambiarVar5(e.target.value)} />
-            <img src={imagenUrl5} alt={`Imagen de ${nombre5}`} />
 
-            <h4>Pokemon 6</h4>
-            <input type="text" onChange={(e) => cambiarVar6(e.target.value)} />
-            <img src={imagenUrl6} alt={`Imagen de ${nombre6}`} />
+              <br />
+              <br />
+
+              <h4>Foto del equipo (url)</h4>
+              <input type="text" value={teamPic} onChange={(e) => setTeamPic(e.target.value)}/>
+              <img src={teamPic} alt={'Fallo exitosamente'} />
+
+              <br />
+              <br />
+
+              <h4>Pokemon 1</h4>
+              <input type="text" onChange={(e) => cambiarVar1(e.target.value)} />
+              <img src={imagenUrl1} alt={`Imagen de ${nombre1}`} />
+
+              <h4>Pokemon 2</h4>
+              <input type="text" onChange={(e) => cambiarVar2(e.target.value)} />
+              <img src={imagenUrl2} width="30px" height="20px" alt={`Imagen de ${nombre2}`} />
+
+              <h4>Pokemon 3</h4>
+              <input type="text" onChange={(e) => cambiarVar3(e.target.value)} />
+              <img src={imagenUrl3} alt={`Imagen de ${nombre3}`} />
+
+              <h4>Pokemon 4</h4>
+              <input type="text" onChange={(e) => cambiarVar4(e.target.value)} />
+              <img src={imagenUrl4} alt={`Imagen de ${nombre4}`} />
+
+              <h4>Pokemon 5</h4>
+              <input type="text" onChange={(e) => cambiarVar5(e.target.value)} />
+              <img src={imagenUrl5} alt={`Imagen de ${nombre5}`} />
+
+              <h4>Pokemon 6</h4>
+              <input type="text" onChange={(e) => cambiarVar6(e.target.value)} />
+              <img src={imagenUrl6} alt={`Imagen de ${nombre6}`} />
+
+              <br />
+              <br />
+              <br />
+              
+              <button type="submit" className="botoncito"> Agregar Equipo! </button>
+              {/* {data.map((trainer, index) => (
+                <p key={index}> {trainer} </p>
+
+              ))} */}
+
+
+            </div>
 
           </div>
-
-
-        </div>
-
-      </div>
+      </form>
+    </div>
 
 
 

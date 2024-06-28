@@ -12,7 +12,7 @@ const GetTrainer = () => {
           const response = await axios.get('http://localhost:5005/api/getTrainers');
           const jsonData = response.data;
       if (jsonData.status_code === 200) {
-        setData(Array.isArray(jsonData.data) ? jsonData.data : []); 
+        setData(Array.isArray(jsonData.data) ? jsonData.data : []);
       } else {
         setError('Error al obtener los equipos');
       }
