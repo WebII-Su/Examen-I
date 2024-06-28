@@ -124,19 +124,6 @@ const PostTeams = () => {
 
   // #############################################################################################################
 
-
-  // const cambiarTeamName = (teamName: string) => {
-  //   setTeamName(teamName); 
-  // };
-
-  // const cambiarEntrenador = (trainer: string) => {
-  //   setTrainer(trainer); 
-  // };
-
-  // const cambiarPicTrainer = (trainerPic: string) => {
-  //   setTrainerPic(trainerPic); 
-  // };
-
   const cambiarVar1 = (pokeName: string) => {
     setNombre1(pokeName.toLowerCase()); 
   };
@@ -161,7 +148,6 @@ const PostTeams = () => {
     setNombre6(pokeName.toLowerCase()); 
   };
 
-  
 
   const buscaPokemon = (nombrePokemon: string, input: string ,pokemones: { name: string; index: number }[]) => {
     for (let i = 0; i < pokemones.length; i++) {
@@ -207,7 +193,6 @@ const PostTeams = () => {
     }
   };
 
-  
   useEffect(() => {
     guardarPokemones(); // Llamada a la función para obtener los Pokémon al montar el componente
   }, []);
@@ -336,11 +321,6 @@ const PostTeams = () => {
               <br />
               
               <button type="submit" className="botoncito"> Agregar Equipo! </button>
-              {/* {data.map((trainer, index) => (
-                <p key={index}> {trainer} </p>
-
-              ))} */}
-
 
             </div>
 
@@ -348,43 +328,6 @@ const PostTeams = () => {
       </form>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      {/* trabajando con las imagenes y los inputs */}
-
-      {/* <input type="text" onChange={(e) => cambiarVar1(e.target.value)} />
-      <input type="text" onChange={(e) => cambiarVar2(e.target.value)} />
-      <input type="text" onChange={(e) => cambiarVar3(e.target.value)} />
-      <input type="text" onChange={(e) => cambiarVar4(e.target.value)} />
-      <input type="text" onChange={(e) => cambiarVar5(e.target.value)} />
-      <input type="text" onChange={(e) => cambiarVar6(e.target.value)} />
-      <p>{nombre1}</p> */}
-      
-      {/* {imagenUrl1  && (
-        <div>
-            <img src={imagenUrl1} alt={`Imagen de ${nombre1}`} />
-            <img src={imagenUrl2} alt={`Imagen de ${nombre2}`} />
-            <img src={imagenUrl3} alt={`Imagen de ${nombre3}`} />
-            <img src={imagenUrl4} alt={`Imagen de ${nombre4}`} />
-            <img src={imagenUrl5} alt={`Imagen de ${nombre5}`} />
-            <img src={imagenUrl6} alt={`Imagen de ${nombre6}`} />
-        </div> 
-        
-      )} */}
-
-      
     </div>
   );
 };
