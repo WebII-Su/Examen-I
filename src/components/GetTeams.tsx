@@ -89,7 +89,7 @@ const GetTeams = () => {
           <img src={team.urlFoto_entrenador} alt={`Foto de ${team.entrenadorEncargado}`} />
           <br />
           <br />
-          <h2>Equipo</h2>
+          <h2>Equipo {team.nombreEquipo} </h2>
           <table>
             <thead>
               <tr>
