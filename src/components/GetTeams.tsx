@@ -7,7 +7,7 @@ const GetTeams = () => {
   const [pokemones, setPokemones] = useState<{ name: string; index: number }[]>([]);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
-
+  //whehe
   // Obtener equipos desde la API
   const llamada_api = async () => {
     try {
