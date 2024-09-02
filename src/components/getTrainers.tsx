@@ -20,12 +20,10 @@ const GetTrainer = () => {
       setError('Error al conectar con el servidor');
     };
   };
-   
       useEffect(() => {
         obtener();
       }, []);
     
-
       if (error) {
         return <div>
             <h4>Parece que hubo un error!</h4>

@@ -44,14 +44,12 @@ const PostTeams = () => {
     }
 }
 
-
   //datos del form
   const [teamName, setTeamName] = useState<string>('');
   const [trainer, setTrainer] = useState<string>('');
   const [trainerPic, setTrainerPic] = useState<string>('');
   const [teamPic, setTeamPic] = useState<string>('');
   const [isFound, setIsFound] = useState(false);
-
 
   const [nombre1, setNombre1] = useState<string>('');
   const [imagenUrl1, setImagenUrl1] = useState<string>(''); 
@@ -70,7 +68,6 @@ const PostTeams = () => {
 
   const [nombre6, setNombre6] = useState<string>('');
   const [imagenUrl6, setImagenUrl6] = useState<string>(''); 
-
 
     const obtener = async () => {
       try {
